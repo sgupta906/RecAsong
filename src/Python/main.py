@@ -35,17 +35,23 @@ def fetch_song_recommendations(mood, genre, artist):
     
     return songs
 
+# src/Python/main.py
+
+import subprocess
+
 def sort_songs_with_c(songs):
-    # Convert song list to input format for C program
     input_data = f"{len(songs)}\n" + "\n".join(f"{song['title']} {song['artist']} {song['popularity']}" for song in songs)
-
-    # Call the C program using subprocess
-    result = subprocess.run(['./src/C/sort_songs'], input=input_data, text=True, capture_output=True)
-
+    
+    # Correct path to the executable
+    result = subprocess.run(['../C/sort_songs'], input=input_data, text=True, capture_output=True)
+    
     if result.returncode == 0:
         print("Sorted Songs:\n", result.stdout)
     else:
         print("Error sorting songs:", result.stderr)
+
+# Rest of your Python script...
+
 
 def main():
     mood, genre, artist = get_user_preferences()

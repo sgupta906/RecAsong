@@ -1,4 +1,6 @@
-package Java;
+// src/Java/Utility.java
+package Java;  // Add this line
+
 public class Utility {
     public static void main(String[] args) {
         if (args.length > 0) {
